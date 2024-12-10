@@ -8,6 +8,9 @@ console.log(typeof Fruit.Apple)
 GetFruit(Fruit.Banana)
 c(Fruit.Banana)
 
+// エラー
+// GetFruit("banana")// Argument of type '"banana"' is not assignable to parameter of type 'Fruit'.
+
 enum Color {
 	Red,
 	Green,

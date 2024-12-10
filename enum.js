@@ -3,7 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var enum2_1 = require("./enum2");
 console.log(enum2_1.Fruit.Apple);
 console.log(typeof enum2_1.Fruit.Apple);
+(0, enum2_1.GetFruit)(enum2_1.Fruit.Banana);
 (0, enum2_1.Color)(enum2_1.Fruit.Banana);
+// エラー
+// GetFruit("banana")// Argument of type '"banana"' is not assignable to parameter of type 'Fruit'.
 var Color;
 (function (Color) {
     Color[Color["Red"] = 0] = "Red";
