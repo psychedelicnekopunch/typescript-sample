@@ -35,6 +35,7 @@ var sampleFn6_2 = function () {
     return 2;
 };
 console.log(sampleFn6(123));
+// console.log(sampleFn6("123"))
 console.log(sampleFn6_2(123));
 var sampleFn7 = function (args) {
     return "I'm ".concat(args.name, ". ").concat(args.age, " years old.");

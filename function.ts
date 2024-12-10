@@ -67,6 +67,7 @@ let sampleFn6_2: SampleFn6 = (): number => {
 }
 
 console.log(sampleFn6(123))
+// console.log(sampleFn6("123"))
 console.log(sampleFn6_2(123))
 
 
