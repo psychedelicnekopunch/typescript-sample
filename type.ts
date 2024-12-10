@@ -22,6 +22,7 @@ type UserInterface = {
 	subject: string[]
 	// goto(to: string)?: string
 	goto(to: string): string
+	set(name: string): void
 }
 
 
@@ -42,6 +43,7 @@ type UserProps = {
 class User implements UserInterface {
 
 	id: number = 0
+	id2: number = 0// UserInterface に存在しないのにエラーにならない
 	name: string = ""
 	score: UserScoreInterface = {
 		english: 0,
@@ -53,6 +55,8 @@ class User implements UserInterface {
 	constructor(user: UserProps) {
 		this.id = user.id
 		this.name = user.name
+		console.log(user)
+		console.log(this)
 	}
 
 	get greeting(): string {
@@ -63,13 +67,24 @@ class User implements UserInterface {
 		return `I'm going to go to ${to}.`
 	}
 
+	set(name: string) {
+		this.name = name
+	}
+
 }
 
 
 let u: User = new User({
 	id: 1,
+	// id2: 123,// Object literal may only specify known properties, and 'id2' does not exist in type 'UserProps'.
 	name: 'Smith',
 	age: 18,
 })
 
 
+let u2: UserInterface = new User({
+	id: 2,
+	// id2: 123,// Object literal may only specify known properties, and 'id2' does not exist in type 'UserProps'.
+	name: 'Bob',
+	age: 28,
+})
