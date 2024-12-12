@@ -1,9 +1,16 @@
 
-
+// es5
 import { GetFruit, Fruit, Color as c } from "./enum2"
 
-console.log(Fruit.Apple)
-console.log(typeof Fruit.Apple)
+// es2017
+// error TS5097: An import path can only end with a '.ts' extension when 'allowImportingTsExtensions' is enabled.
+// error: $ tsc enum.ts -t es2017 --allowImportingTsExtensions --noEmit
+// error: $ tsc enum.ts -t es2017 --allowImportingTsExtensions --emitDeclarationOnly
+// import { GetFruit, Fruit, Color as c } from "./enum2.ts"
+
+console.log(`Fruit.Apple: ${Fruit.Apple}`)
+console.log(`Fruit.Apple(type): ${typeof Fruit.Apple}`)
+console.log(`Fruit(type): ${typeof Fruit}`)
 
 GetFruit(Fruit.Banana)
 c(Fruit.Banana)
@@ -49,4 +56,20 @@ const green: Color = Color.Green
 
 console.log(Color.Green == green)// true
 
+
+
+
+// Property 'entries' does not exist on type 'ObjectConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2017' or later.
+// tsc enum.ts -t es2017
+// for (const [key, value] of Object.entries(Fruit)) {
+// 	console.log(`${key}: ${value}`)
+// }
+// console.log(Object.keys(Fruit))
+Object.keys(Color).forEach((key) => {
+	console.log(`${key}: ${Color[key]}`)
+})
+
+Object.keys(Fruit).forEach((key) => {
+	console.log(`${key}: ${Fruit[key]}`)
+})
 

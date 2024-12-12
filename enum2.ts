@@ -1,5 +1,4 @@
 
-
 export enum Fruit {
 	Apple = "apple",
 	Lemon = "lemon",

@@ -67,8 +67,20 @@ let sampleFn6_2: SampleFn6 = (): number => {
 }
 
 console.log(sampleFn6(123))
+
+// エラー
+// console.log(sampleFn6(123, 123))
 // console.log(sampleFn6("123"))
+
 console.log(sampleFn6_2(123))
+
+// エラー
+// Expected 1 arguments, but got 0.
+// console.log(sampleFn6_2())
+
+// エラー
+// Expected 1 arguments, but got 2.
+// console.log(sampleFn6_2(123, 123))
 
 
 type SampleFn7Args = {
