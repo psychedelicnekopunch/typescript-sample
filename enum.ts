@@ -8,6 +8,9 @@ import { GetFruit, Fruit, Color as c } from "./enum2"
 // error: $ tsc enum.ts -t es2017 --allowImportingTsExtensions --emitDeclarationOnly
 // import { GetFruit, Fruit, Color as c } from "./enum2.ts"
 
+// エラー
+// error TS2551: Property 'Apples' does not exist on type 'typeof Fruit'. Did you mean 'Apple'?
+// console.log(`Fruit.Apples: ${Fruit.Apples}`)
 console.log(`Fruit.Apple: ${Fruit.Apple}`)
 console.log(`Fruit.Apple(type): ${typeof Fruit.Apple}`)
 console.log(`Fruit(type): ${typeof Fruit}`)
