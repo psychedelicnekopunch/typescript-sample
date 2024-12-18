@@ -1,8 +1,9 @@
 
+// $ tsc -t es2017 asyncAwait.ts
 // 非同期処理
 
 
-function countUp(i: number) {
+function countUp(i: number): void {
 	console.log(i)
 	setTimeout(() => {
 		if (i < 5) {
@@ -49,18 +50,54 @@ function getB(): Promise<string> {
 	})
 }
 
-async function initB(): Promise<void> {
-	console.log(">>>> start initB()")
-	await getB()
-		.then((result: string) => {
-			console.log(result)
-		})
-		.catch((error: string) => {
-			console.log(typeof error)
-			console.log(error)
-		})
-	console.log("<<<< finish initB()")
+// async function initB(): Promise<void> {
+// 	console.log(">>>> start initB()")
+// 	await getB()
+// 		.then((result: string) => {
+// 			console.log(result)
+// 		})
+// 		.catch((error: string) => {
+// 			console.log(typeof error)
+// 			console.log(error)
+// 		})
+// 	console.log("<<<< finish initB()")
+// }
+
+// console.log("<<<< finish initB()") の挙動がおかしいので、
+// .then(), .catch() の中に入れるべき。
+//
+function initB(): Promise<void> {
+	return new Promise((resolve) => {
+		console.log(">>>> start initB()")
+		getB()
+			.then((result: string) => {
+				console.log(result)
+				resolve()
+			})
+			.catch((error: string) => {
+				console.log(typeof error)
+				console.log(error)
+				resolve()
+			})
+		console.log("<<<< finish initB()")
+	})
 }
+
+// async ~ await か Promise で処理しないと、
+// 呼び出し側で挙動がおかしくなる。
+//
+// function initB(): void {
+// 	console.log(">>>> start initB()")
+// 	getB()
+// 		.then((result: string) => {
+// 			console.log(result)
+// 		})
+// 		.catch((error: string) => {
+// 			console.log(typeof error)
+// 			console.log(error)
+// 		})
+// 	console.log("<<<< finish initB()")
+// }
 
 
 
@@ -88,7 +125,7 @@ async function initC(): Promise<void> {
 
 
 
-// (function common() {
+// (function common(): void {
 // 	console.log("===== START COMMON =====")
 // 	countUp(0)
 // 	initA()
@@ -97,7 +134,7 @@ async function initC(): Promise<void> {
 // 	console.log("===== FNISH COMMON =====")
 // }())
 
-// (async function waterfall() {
+// (async function waterfall(): Promise<void> {
 // 	console.log("===== START WATERFALL =====")
 // 	countUp(0)
 // 	await initA()
@@ -106,7 +143,7 @@ async function initC(): Promise<void> {
 // 	console.log("===== FNISH WATERFALL =====")
 // }())
 
-// (async function parallel() {
+// (async function parallel(): Promise<void> {
 // 	console.log("===== START PARALLEL =====")
 // 	countUp(0)
 // 	await Promise.all([
@@ -117,7 +154,7 @@ async function initC(): Promise<void> {
 // 	console.log("===== FNISH PARALLEL =====")
 // }())
 
-(async function mix() {
+(async function mix(): Promise<void> {
 	console.log("===== START MIX =====")
 	countUp(0)
 	await initA()
