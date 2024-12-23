@@ -19,7 +19,7 @@ function getA(): Promise<string> {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
 			// throw new Error("error A")
-			reject(Error("error A"))
+			reject(new Error("error A"))
 			resolve("A")
 			// reject(Error("error A"))
 		}, 3000)
@@ -44,7 +44,8 @@ async function initA(): Promise<void> {
 function getB(): Promise<string> {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
-			reject("error B")
+			// reject("error B")
+			reject(new Error("error B"))
 			resolve("B")
 		}, 2000)
 	})
@@ -70,11 +71,11 @@ function initB(): Promise<void> {
 	return new Promise((resolve) => {
 		console.log(">>>> start initB()")
 		getB()
-			.then((result: string) => {
+			.then((result) => {
 				console.log(result)
 				resolve()
 			})
-			.catch((error: string) => {
+			.catch((error) => {
 				console.log(typeof error)
 				console.log(error)
 				resolve()
@@ -109,14 +110,26 @@ function getC(): Promise<string> {
 		}, 1000)
 	})
 }
+function getC2(): Promise<string> {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve("C2")
+		}, 1000)
+	})
+}
 
 async function initC(): Promise<void> {
 	console.log(">>>> start initC()")
 	await getC()
 		.then((result: string) => {
 			console.log(result)
+			return getC2()
 		})
-		.catch((error: string) => {
+		.then((result: string) => {
+			console.log(result)
+		})
+		.catch((error: object) => {
+			console.log(typeof error)
 			console.log(error)
 		})
 	console.log("<<<< finish initC()")
