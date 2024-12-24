@@ -2,6 +2,7 @@
 
 import eslint from '@eslint/js'
 import tseslint from 'typescript-eslint'
+import eslintConfigPrettier from "eslint-config-prettier";
 
 
 // export default tseslint.config(
@@ -47,6 +48,7 @@ export default tseslint.config(
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     },
   },
+  eslintConfigPrettier,
 )
 
 // export default tseslint.config(
