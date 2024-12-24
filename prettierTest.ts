@@ -1,10 +1,12 @@
 
 // $ npx prettier prettierTest.ts
+// $ npx prettier prettierTest.ts --check
+// $ npx prettier prettierTest.ts --write
 
-const bool=true
+const bool=true;
 
 const obj = {	"test": 'test'
-}
+};
 
 function test(v){
 	console.log("test")
