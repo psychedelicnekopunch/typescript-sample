@@ -1,4 +1,7 @@
 
+// $ npx eslint eslintTest.ts
+// $ npx eslint eslintTest.ts --fix 自動的にファイルを整形する
+
 
 // error  'str' is never reassigned. Use 'const' instead  prefer-const
 // error  'str' is assigned a value but never used        @typescript-eslint/no-unused-vars
