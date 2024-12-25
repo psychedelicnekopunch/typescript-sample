@@ -5,6 +5,7 @@
   "semi": false,
   "singleQuote": false,
   "jsxSingleQuote": false,
+  "trailingComma": "all",
   "bracketSpacing": true,
   "bracketSameLine": false,
   "arrowParens": "always",
