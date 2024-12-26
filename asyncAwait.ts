@@ -1,5 +1,5 @@
 
-// $ tsc -t es2017 asyncAwait.ts
+// $ tsc -t es2023 asyncAwait.ts
 // 非同期処理
 
 
@@ -167,13 +167,96 @@ async function initC(): Promise<void> {
 // 	console.log("===== FNISH PARALLEL =====")
 // }())
 
-(async function mix(): Promise<void> {
-	console.log("===== START MIX =====")
+// (async function mix(): Promise<void> {
+// 	console.log("===== START MIX =====")
+// 	countUp(0)
+// 	await initA()
+// 	await Promise.all([
+// 		initB(),
+// 		initC(),
+// 	])
+// 	console.log("===== FNISH MIX =====")
+// }())
+
+
+
+
+function get(ms: number, key: string, isReject: boolean): Promise<string> {
+	console.log(`>>>>> START ${key}`)
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			console.log(`<<<<< FINISH ${key}`)
+			if (isReject) {
+				reject(new Error(`error ${key}`))
+				return
+			}
+			resolve(key)
+		}, ms)
+	})
+}
+
+
+// (async function all(): Promise<void> {
+// 	console.log("===== START Promise.all() =====")
+// 	countUp(0)
+// 	// try {
+// 	// 	const res = await Promise.all([
+// 	// 		get(3000, "A", false),
+// 	// 		get(2000, "B", true),
+// 	// 		get(1000, "C", false),
+// 	// 	])
+// 	// 	console.log("res")
+// 	// 	console.log(e)
+// 	// } catch(e) {
+// 	// 	console.log("error")
+// 	// 	console.log(e)
+// 	// }
+// 	await Promise.all([
+// 			get(3000, "A", false).catch((error) => error),
+// 			get(2000, "B", true).catch((error) => error),
+// 			get(1000, "C", false).catch((error) => error),
+// 		]).then((values) => {
+// 			console.log("values")
+// 			console.log(values)
+// 		})
+// 	console.log("===== FNISH Promise.all() =====")
+// }())
+
+
+// (async function allSettled(): Promise<void> {
+// 	console.log("===== START Promise.allSettled() =====")
+// 	countUp(0)
+// 	await Promise.allSettled([
+// 		get(3000, "A", false),
+// 		get(2000, "B", true),
+// 		get(1000, "C", false),
+// 	]).then((values) => {
+// 		console.log(values)
+// 	})
+// 	console.log("===== FNISH Promise.allSettled() =====")
+// }())
+
+
+(async function race(): Promise<void> {
+	console.log("===== START Promise.race() =====")
 	countUp(0)
-	await initA()
-	await Promise.all([
-		initB(),
-		initC(),
-	])
-	console.log("===== FNISH MIX =====")
+	await Promise.race([
+		get(3000, "A", false),
+		get(2000, "B", true),
+		get(1000, "C", false),
+		// get(1000, "C", true),
+	]).then(
+		(value) => {
+			console.log("success")
+			console.log(value)
+		},
+		(error) => {
+			console.log("failed")
+			console.log(error)
+		}
+	)
+	console.log("===== FNISH Promise.race() =====")
 }())
+
+
+
