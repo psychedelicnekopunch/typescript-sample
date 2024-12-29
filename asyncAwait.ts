@@ -159,7 +159,7 @@ async function initC(): Promise<void> {
 // (async function parallel(): Promise<void> {
 // 	console.log("===== START PARALLEL =====")
 // 	countUp(0)
-// 	await Promise.all([
+// 	await Promise.allSettled([
 // 		initA(),
 // 		initB(),
 // 		initC(),
@@ -171,7 +171,7 @@ async function initC(): Promise<void> {
 // 	console.log("===== START MIX =====")
 // 	countUp(0)
 // 	await initA()
-// 	await Promise.all([
+// 	await Promise.allSettled([
 // 		initB(),
 // 		initC(),
 // 	])
