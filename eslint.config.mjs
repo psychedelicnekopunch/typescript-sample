@@ -30,26 +30,26 @@ import eslintConfigPrettier from "eslint-config-prettier"
 //   },
 // )
 
-export default tseslint.config(
-  eslint.configs.recommended,
-  tseslint.configs.strict,
-  tseslint.configs.stylistic,
-  {
-    rules: {
-      "@typescript-eslint/no-unused-vars": ["error", {
-        // "args": "all",
-        // "argsIgnorePattern": "^_",
-        // "caughtErrors": "all",
-        // "caughtErrorsIgnorePattern": "^_",
-        // "destructuredArrayIgnorePattern": "^_",
-        "varsIgnorePattern": "^_",
-        // "ignoreRestSiblings": true,
-      }],
-      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
-    },
-  },
-  eslintConfigPrettier,
-)
+// export default tseslint.config(
+//   eslint.configs.recommended,
+//   tseslint.configs.strict,
+//   tseslint.configs.stylistic,
+//   {
+//     rules: {
+//       "@typescript-eslint/no-unused-vars": ["error", {
+//         // "args": "all",
+//         // "argsIgnorePattern": "^_",
+//         // "caughtErrors": "all",
+//         // "caughtErrorsIgnorePattern": "^_",
+//         // "destructuredArrayIgnorePattern": "^_",
+//         "varsIgnorePattern": "^_",
+//         // "ignoreRestSiblings": true,
+//       }],
+//       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+//     },
+//   },
+//   eslintConfigPrettier,
+// )
 
 // export default tseslint.config(
 //   eslint.configs.recommended,
@@ -86,22 +86,23 @@ export default tseslint.config(
 //   },
 // )
 
-// export default tseslint.config(
-//   eslint.configs.recommended,
-//   tseslint.configs.strict,
-//   tseslint.configs.stylistic,
-//   {
-//     rules: {
-//       "@typescript-eslint/no-unused-vars": ["error", {
-//         "args": "all",
-//         "argsIgnorePattern": "^_",
-//         "caughtErrors": "all",
-//         "caughtErrorsIgnorePattern": "^_",
-//         "destructuredArrayIgnorePattern": "^_",
-//         "varsIgnorePattern": "^_",
-//         "ignoreRestSiblings": true,
-//       }],
-//       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
-//     }
-//   },
-// )
+export default tseslint.config(
+  eslint.configs.recommended,
+  tseslint.configs.strict,
+  tseslint.configs.stylistic,
+  {
+    rules: {
+      "@typescript-eslint/no-unused-vars": ["error", {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true,
+      }],
+      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    },
+  },
+  eslintConfigPrettier,
+)
