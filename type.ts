@@ -88,3 +88,8 @@ let u2: UserInterface = new User({
 	name: 'Bob',
 	age: 28,
 })
+
+
+console.log(u.id2)
+// console.log(u2.id2)// error TS2339: Property 'id2' does not exist on type 'UserInterface'.
+
